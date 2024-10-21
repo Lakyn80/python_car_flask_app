@@ -29,8 +29,14 @@
 
       <h2>Current Cars</h2>
       <ul>
-        {% for car in cars %}
-        <li>{{ car.describe_car() }}</li>
+        {% for index, car in cars %}
+        <li>
+          {{ car.describe_car() }}
+          <form action="/delete_car" method="POST" style="display: inline">
+            <input type="hidden" name="index" value="{{ index }}" />
+            <button type="submit">Odstranit</button>
+          </form>
+        </li>
         {% endfor %}
       </ul>
     </div>
