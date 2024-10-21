@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car Collection</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Car Collection</h1>
+
+      <!-- Formulář pro přidání auta -->
+      <form action="/add_car" method="POST">
+        <label for="color">Color:</label>
+        <input type="text" id="color" name="color" required />
+
+        <label for="model">Model:</label>
+        <input type="text" id="model" name="model" required />
+
+        <label for="car_type">Type:</label>
+        <input type="text" id="car_type" name="car_type" required />
+
+        <button type="submit">Add Car</button>
+      </form>
+
+      <h2>Current Cars</h2>
+      <ul>
+        {% for car in cars %}
+        <li>{{ car.describe_car() }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </body>
+</html>
